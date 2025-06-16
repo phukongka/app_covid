@@ -1,18 +1,14 @@
-FROM node:20-alpine AS build-stage
-
+# Build stage
+FROM node:18-alpine as build
 WORKDIR /app
-
 COPY . .
-
 RUN npm install
 RUN npm run build
 
-FROM node:20-alpine AS production-stage
-
+# Production stage
+FROM node:18-alpine
 WORKDIR /app
-
-COPY --from=build-stage /app .
-
+COPY --from=build . .
+ENV NITRO_PORT=3000
 EXPOSE 3000
-
-CMD ["npm", "run", "start"]
+CMD ["node", ".output/server/index.mjs"]

@@ -124,12 +124,12 @@
   async  mounted () {
        this.reset()
       this.reset()
-      const baseUrl = import.meta.env.PUBLIC_API_BASE_URL || "http://localhost:7000"
+      const baseUrl = import.meta.env.PUBLIC_API_BASE_URL || "http://203.113.123.194:7000"
       const response = await axios.get(`${baseUrl}/api/covid`);
       const result = response.data;
       console.log("data=", result);
       // this.books = result.data;
-      this.books = result;
+      this.books = result.rows[0];
   
     },
     methods: {
