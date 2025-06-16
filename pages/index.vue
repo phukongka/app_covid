@@ -124,7 +124,7 @@
   async  mounted () {
        this.reset()
       this.reset()
-      const baseUrl = import.meta.env.API_BASE || "http://localhost:7000"
+      const baseUrl = "http://203.113.123.194:7000" || "http://localhost:7000"
       const response = await axios.get(`${baseUrl}/api/covid`);
       const result = response.data;
       console.log("data=", result);
